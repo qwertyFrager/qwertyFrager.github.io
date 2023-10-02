@@ -109,6 +109,7 @@ function setHeaderHeight(isShow) {
     });
 }
 
+/*
 window.addEventListener('scroll', function() {
         var elementPosition = document.getElementsByClassName('sticky-nav-box')[0].getBoundingClientRect().top;
         if (elementPosition <= 0 && window.innerWidth <= 980) {
@@ -118,6 +119,7 @@ window.addEventListener('scroll', function() {
             document.getElementsByClassName('sticky-nav-background')[0].style.display = 'none';
         }
 });
+*/
 
 document.addEventListener("DOMContentLoaded", function() {
     // Получаем все элементы с классом "item"
@@ -137,3 +139,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+
+var element = document.getElementsByClassName("sticky-nav-box")[0]
+
+function handleScroll(){
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    //var elementOffsetTop = element.getBoundingClientRect().top;
+    var elementOffsetTop = element.offsetTop;
+    if (elementOffsetTop-scrollTop <= 0 && window.innerWidth <= 980){
+        document.getElementsByClassName('sticky-nav-background')[0].style.display = 'block';
+    }else {
+        document.getElementsByClassName('sticky-nav-background')[0].style.display = 'none';
+    }
+}
+window.addEventListener("scroll", handleScroll);

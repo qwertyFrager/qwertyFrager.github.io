@@ -154,3 +154,4 @@ function handleScroll(){
     }
 }
 window.addEventListener("scroll", handleScroll);
+window.addEventListener("touchmove", handleScroll);
